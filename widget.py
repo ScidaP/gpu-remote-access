@@ -14,6 +14,11 @@ class Widget(QWidget):
         super().__init__(parent)
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
+        self.ui.BotonEnviar1.clicked.connect(self.cambiar_texto_label)
+
+    def cambiar_texto_label(self):
+        self.ui.label_2.setText("jeje")
+
 
 
 if __name__ == "__main__":
