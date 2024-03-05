@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QTextEdit, QWidget)
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -45,9 +45,6 @@ class Ui_Widget(object):
         self.label_2.setGeometry(QRect(190, 260, 101, 18))
         self.label_2.setAutoFillBackground(False)
         self.label_2.setStyleSheet(u"")
-        self.text_usuario = QTextEdit(Widget)
-        self.text_usuario.setObjectName(u"text_usuario")
-        self.text_usuario.setGeometry(QRect(190, 280, 321, 31))
         self.label_3 = QLabel(Widget)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(130, 90, 521, 121))
@@ -62,7 +59,10 @@ class Ui_Widget(object):
         self.text_pass.setEchoMode(QLineEdit.Password)
         self.label_mensaje = QLabel(Widget)
         self.label_mensaje.setObjectName(u"label_mensaje")
-        self.label_mensaje.setGeometry(QRect(190, 220, 101, 18))
+        self.label_mensaje.setGeometry(QRect(190, 220, 511, 18))
+        self.text_usuario = QLineEdit(Widget)
+        self.text_usuario.setObjectName(u"text_usuario")
+        self.text_usuario.setGeometry(QRect(190, 280, 321, 31))
 
         self.retranslateUi(Widget)
 

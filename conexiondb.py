@@ -24,11 +24,18 @@ class db:
 
     def coincide(self, usuario, contra):
         cursor = self.conexion.cursor()
+        contra_s = str(contra)
 
-        cursor.execute("SELECT * FROM usuarios WHERE usuario=%s AND password=%s", (usuario, contra))
+        cursor.execute("SELECT * FROM usuarios WHERE usuario=%s AND password=%s", (usuario, contra_s))
 
         res = cursor.fetchone()
 
         if res:
             return True
         return False
+
+"""
+bd = db("ejemplo","admin","admin")
+bd.conectar()
+print(bd.coincide("Pato", 1234))
+"""
