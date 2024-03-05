@@ -63,6 +63,12 @@
      <height>18</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
     <string>Usuario</string>
    </property>
@@ -97,7 +103,7 @@
     <string>Remote PC Manager</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="text_pass">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -108,6 +114,19 @@
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_mensaje">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>220</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>-</string>
    </property>
   </widget>
  </widget>
