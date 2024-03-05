@@ -25,12 +25,10 @@ class db:
     def coincide(self, usuario, contra):
         cursor = self.conexion.cursor()
 
-        cursor.execute("SELECT * FROM usuarios;")
+        cursor.execute("SELECT * FROM usuarios WHERE usuario=%s AND password=%s", (usuario, contra))
 
-        resultados = cursor.fetchall()
-        for fila in resultados:
-            if fila[1] == usuario and fila[2] == contra:
-                cursor.close()
-                return True
-        cursor.close()
+        res = cursor.fetchone()
+
+        if res:
+            return True
         return False
