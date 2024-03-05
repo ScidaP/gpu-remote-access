@@ -2,6 +2,7 @@
     "files": [
         "widget.py",
         "form.ui",
-        "ui_form.py"
+        "ui_form.py",
+        "conexiondb.py"
     ]
 }
