@@ -16,9 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QWidget, QDialog)
 import time
 import conexiondb as db
+from ui_home import Ui_Dialog
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -67,7 +68,7 @@ class Ui_Widget(object):
         self.text_usuario.setGeometry(QRect(190, 280, 321, 31))
 
         self.retranslateUi(Widget)
-        self.BotonEnviar1.clicked.connect(lambda: inicio_sesion(self))
+        self.BotonEnviar1.clicked.connect(lambda: inicio_sesion(self, Widget))
 
         QMetaObject.connectSlotsByName(Widget)
     # setupUi
@@ -81,19 +82,28 @@ class Ui_Widget(object):
         self.label_mensaje.setText(QCoreApplication.translate("Widget", u"-", None))
     # retranslateUi
 
-def inicio_sesion(widget):
+def inicio_sesion(ui_widget, widget):
     bbdd = db.db("ejemplo", "admin", "admin")
     bbdd.conectar()
-    user = widget.text_usuario.text()
-    passw = widget.text_pass.text()
-    mod_mensaje(widget, "Validando inicio de sesion...", "none")
+    user = ui_widget.text_usuario.text()
+    passw = ui_widget.text_pass.text()
+    mod_mensaje(ui_widget, "Validando inicio de sesion...", "none")
     QApplication.processEvents()
     time.sleep(2)
     if bbdd.coincide(user, passw):
-        mod_mensaje(widget, "Sesion iniciada", "green")
+        mod_mensaje(ui_widget, "Sesion iniciada", "green")
+        widget.close()
+        iniciar_home()
     else:
-        mod_mensaje(widget, "Error: Usuario o contraseña incorrectos", "red")
+        mod_mensaje(ui_widget, "Error: Usuario o contraseña incorrectos", "red")
 
 def mod_mensaje(widget, texto, color):
     widget.label_mensaje.setStyleSheet(f"color: {color};")
     widget.label_mensaje.setText(texto)
+
+def iniciar_home():
+    dialog = QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(dialog)
+    dialog.show()
+    dialog.exec_()

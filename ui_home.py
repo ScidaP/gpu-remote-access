@@ -56,3 +56,4 @@ class Ui_Dialog(object):
         self.b_nueva_conexion.setText(QCoreApplication.translate("Dialog", u"Nueva", None))
     # retranslateUi
 
+
