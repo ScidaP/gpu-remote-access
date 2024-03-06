@@ -3,6 +3,7 @@
         "widget.py",
         "form.ui",
         "ui_form.py",
-        "conexiondb.py"
+        "conexiondb.py",
+        "home.ui"
     ]
 }
