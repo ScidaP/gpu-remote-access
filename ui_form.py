@@ -17,6 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QWidget)
+import time
+import conexiondb as db
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -65,6 +67,7 @@ class Ui_Widget(object):
         self.text_usuario.setGeometry(QRect(190, 280, 321, 31))
 
         self.retranslateUi(Widget)
+        self.BotonEnviar1.clicked.connect(lambda: inicio_sesion(self))
 
         QMetaObject.connectSlotsByName(Widget)
     # setupUi
@@ -78,3 +81,19 @@ class Ui_Widget(object):
         self.label_mensaje.setText(QCoreApplication.translate("Widget", u"-", None))
     # retranslateUi
 
+def inicio_sesion(widget):
+    bbdd = db.db("ejemplo", "admin", "admin")
+    bbdd.conectar()
+    user = widget.text_usuario.text()
+    passw = widget.text_pass.text()
+    mod_mensaje(widget, "Validando inicio de sesion...", "none")
+    QApplication.processEvents()
+    time.sleep(2)
+    if bbdd.coincide(user, passw):
+        mod_mensaje(widget, "Sesion iniciada", "green")
+    else:
+        mod_mensaje(widget, "Error: Usuario o contraseña incorrectos", "red")
+
+def mod_mensaje(widget, texto, color):
+    widget.label_mensaje.setStyleSheet(f"color: {color};")
+    widget.label_mensaje.setText(texto)
