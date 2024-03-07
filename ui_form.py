@@ -90,7 +90,12 @@ def inicio_sesion(ui_widget, widget):
     mod_mensaje(ui_widget, "Validando inicio de sesion...", "none")
     QApplication.processEvents()
     time.sleep(2)
-    if bbdd.coincide(user, passw):
+    res = bbdd.coincide(user, passw)
+
+    # Se evalua el valor de 'res' para iniciar sesion
+    if isinstance(res, str): # Cuando res = 'e', significa que hubo error en la conexion con la DB.
+        mod_mensaje(ui_widget, "No se pudo conectar con la DB", "red")
+    if res:
         mod_mensaje(ui_widget, "Sesion iniciada", "green")
         widget.close()
         iniciar_home()
