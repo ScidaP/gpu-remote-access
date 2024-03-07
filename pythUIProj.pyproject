@@ -5,6 +5,7 @@
         "ui_form.py",
         "conexiondb.py",
         "home.ui",
-        "ui_home.py"
+        "ui_home.py",
+        "form_controller.py"
     ]
 }

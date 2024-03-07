@@ -68,7 +68,6 @@ class Ui_Widget(object):
         self.text_usuario.setGeometry(QRect(190, 280, 321, 31))
 
         self.retranslateUi(Widget)
-        self.BotonEnviar1.clicked.connect(lambda: inicio_sesion(self, Widget))
 
         QMetaObject.connectSlotsByName(Widget)
     # setupUi
@@ -81,34 +80,3 @@ class Ui_Widget(object):
         self.label_3.setText(QCoreApplication.translate("Widget", u"Remote PC Manager", None))
         self.label_mensaje.setText(QCoreApplication.translate("Widget", u"-", None))
     # retranslateUi
-
-def inicio_sesion(ui_widget, widget):
-    bbdd = db.db("ejemplo", "admin", "admin")
-    bbdd.conectar()
-    user = ui_widget.text_usuario.text()
-    passw = ui_widget.text_pass.text()
-    mod_mensaje(ui_widget, "Validando inicio de sesion...", "none")
-    QApplication.processEvents()
-    time.sleep(2)
-    res = bbdd.coincide(user, passw)
-
-    # Se evalua el valor de 'res' para iniciar sesion
-    if isinstance(res, str): # Cuando res = 'e', significa que hubo error en la conexion con la DB.
-        mod_mensaje(ui_widget, "No se pudo conectar con la DB", "red")
-    if res:
-        mod_mensaje(ui_widget, "Sesion iniciada", "green")
-        widget.close()
-        iniciar_home()
-    else:
-        mod_mensaje(ui_widget, "Error: Usuario o contraseña incorrectos", "red")
-
-def mod_mensaje(widget, texto, color):
-    widget.label_mensaje.setStyleSheet(f"color: {color};")
-    widget.label_mensaje.setText(texto)
-
-def iniciar_home():
-    dialog = QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(dialog)
-    dialog.show()
-    dialog.exec_()
