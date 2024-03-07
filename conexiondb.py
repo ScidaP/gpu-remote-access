@@ -24,6 +24,7 @@ class db:
             self.conexion = conexion;
         except Exception:
             print("Error al conectar la DB: %s", Exception.args)
+
     def coincide(self, usuario, contra):
         try:
             cursor = self.conexion.cursor()

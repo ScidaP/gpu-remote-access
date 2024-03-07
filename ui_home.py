@@ -17,6 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QLabel,
     QListView, QPushButton, QSizePolicy, QWidget)
+from requests import get
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -51,9 +52,11 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.l_ip_propia.setText(QCoreApplication.translate("Dialog", u"Tu IP: ", None))
+        self.l_ip_propia.setText(QCoreApplication.translate("Dialog", u"Tu IP: %s" % obtener_ip(), None))
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Conexiones:", None))
         self.b_nueva_conexion.setText(QCoreApplication.translate("Dialog", u"Nueva", None))
     # retranslateUi
 
-
+def obtener_ip():
+    ip = get('https://api.ipify.org').content.decode('utf8')
+    return ip
