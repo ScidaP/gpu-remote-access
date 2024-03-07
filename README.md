@@ -1,4 +1,4 @@
-## Control multiple GPU's through your PC.
+## Control multiple GPU's from your PC.
 ***
 
 Quiero crear un programa que permita conectar una computadora con varias computadoras remotas, de manera que la computadora principal pueda controlar las GPU remotas.
