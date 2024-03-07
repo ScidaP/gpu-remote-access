@@ -3,7 +3,7 @@
 from PySide6.QtWidgets import QApplication, QDialog
 import time
 import conexiondb as db
-from ui_home import Ui_Dialog
+from dialog_home import dialog_home
 
 class FormController:
     def __init__(self, Widget):
@@ -37,8 +37,6 @@ def mod_mensaje(widget, texto, color):
     widget.ui.label_mensaje.setText(texto)
 
 def iniciar_home():
-    dialog = QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(dialog)
+    dialog = dialog_home()
     dialog.show()
     dialog.exec_()

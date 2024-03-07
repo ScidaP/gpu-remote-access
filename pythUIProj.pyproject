@@ -6,6 +6,8 @@
         "conexiondb.py",
         "ui/home.ui",
         "ui/ui_home.py",
-        "controllers/form_controller.py"
+        "controllers/form_controller.py",
+        "controllers/home_controller.py",
+        "dialog_home.py"
     ]
 }
