@@ -1,11 +1,11 @@
 {
     "files": [
         "widget.py",
-        "form.ui",
-        "ui_form.py",
+        "ui/form.ui",
+        "ui/ui_form.py",
         "conexiondb.py",
-        "home.ui",
-        "ui_home.py",
-        "form_controller.py"
+        "ui/home.ui",
+        "ui/ui_home.py",
+        "controllers/form_controller.py"
     ]
 }

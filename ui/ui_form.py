@@ -16,10 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QWidget, QDialog)
-import time
-import conexiondb as db
-from ui_home import Ui_Dialog
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -80,3 +77,4 @@ class Ui_Widget(object):
         self.label_3.setText(QCoreApplication.translate("Widget", u"Remote PC Manager", None))
         self.label_mensaje.setText(QCoreApplication.translate("Widget", u"-", None))
     # retranslateUi
+

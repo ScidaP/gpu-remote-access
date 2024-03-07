@@ -1,5 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
+sys.path.append('ui/')
+sys.path.append('controllers/')
 from PySide6.QtWidgets import QApplication, QWidget
 
 # Important:
