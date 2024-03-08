@@ -8,6 +8,9 @@
         "ui/ui_home.py",
         "controllers/form_controller.py",
         "controllers/home_controller.py",
-        "dialog_home.py"
+        "dialog_home.py",
+        "dialog_conexion.py",
+        "ui/conexion.ui",
+        "controllers/conexion_controller.py"
     ]
 }

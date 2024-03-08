@@ -11,7 +11,7 @@ from PySide6.QtWidgets import QApplication, QWidget
 from ui_form import Ui_Widget
 from form_controller import FormController
 
-class Widget(QWidget):
+class widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Widget()
@@ -21,6 +21,6 @@ class Widget(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = Widget()
+    widget = widget()
     widget.show()
     sys.exit(app.exec())

@@ -6,8 +6,8 @@ import conexiondb as db
 from dialog_home import dialog_home
 
 class FormController:
-    def __init__(self, Widget):
-        self.crear_conexiones(Widget)
+    def __init__(self, widget):
+        self.crear_conexiones(widget)
 
     def crear_conexiones(self, Widget):
         Widget.ui.BotonEnviar1.clicked.connect(lambda: inicio_sesion(Widget))
@@ -39,4 +39,3 @@ def mod_mensaje(widget, texto, color):
 def iniciar_home():
     dialog = dialog_home()
     dialog.show()
-    dialog.exec_()
