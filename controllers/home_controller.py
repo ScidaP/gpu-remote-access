@@ -2,6 +2,7 @@
 from requests import get
 from dialog_conexion import dialog_conexion
 from PySide6.QtCore import Qt, QStringListModel
+from conexiondb import db
 
 class homeController:
     def __init__(self, Dialog):
@@ -10,7 +11,7 @@ class homeController:
         model = obtener_model()
         Dialog.ui.listado_conexiones.setModel(model)
 
-    def crear_conexiones(self, Dialog): # la dejo declarada y la defino luego
+    def crear_conexiones(self, Dialog):
         Dialog.ui.b_nueva_conexion.clicked.connect(abrir_dialog_conexion)
 
 def obtener_ip():
@@ -24,6 +25,7 @@ def abrir_dialog_conexion():
 def obtener_model():
     # Busco la info cargada al usuario correspondiente en la db y se guarda en la vble 'data'
     # Formato correcto de los datos: data = ['ejemplo', 'uno', '188.90.23.222', '240.12.12.231']
+    db.obtener_datos('pato')
     data = ['ejemplo', 'uno', '188.90.23.222', '240.12.12.231']
     model = QStringListModel()
     model.setStringList(data)

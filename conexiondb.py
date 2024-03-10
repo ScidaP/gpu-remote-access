@@ -5,6 +5,9 @@
 
 import psycopg2 as pgsql
 
+#Tablas: usuarios(id_usuario, usuario, password)
+#conexiones(id, id_usuario, conexion)
+
 class db:
 
     def __init__(self):
@@ -41,11 +44,25 @@ class db:
         except Exception:
             return 'e'
 
-    def obtener_datos(usuario):
+    def obtener_id_usuario(usuario): # -> Chequear su funcionamiento
         try:
             cursor = db.conexion.cursor()
 
-            cursor.execute("SELECT data FROM conexiones WHERE usuario=%s", (usuario))
+            cursor.execute("SELECT id_usuario FROM usuarios WHERE usuario=%s", (usuario))
+
+            res = cursor.fetchone()
+
+            if res:
+                return res
+            return False
+        except Exception:
+            return 'e'
+
+    def obtener_datos(self, usuario): # -> Chequear su funcionamiento
+        try:
+            cursor = db.conexion.cursor()
+
+            cursor.execute("SELECT conexion FROM conexiones WHERE id_usuario=%s", (self.obtener_id_usuario(usuario)))
 
             res = cursor.fetchall()
 
