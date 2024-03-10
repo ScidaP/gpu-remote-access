@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QApplication, QDialog
 import time
 import conexiondb as db
 from dialog_home import dialog_home
+from conexiondb import db
 
 class FormController:
     def __init__(self, widget):
@@ -13,14 +14,12 @@ class FormController:
         Widget.ui.BotonEnviar1.clicked.connect(lambda: inicio_sesion(Widget))
 
 def inicio_sesion(widget):
-    bbdd = db.db("ejemplo", "admin", "admin")
-    bbdd.conectar()
     user = widget.ui.text_usuario.text()
     passw = widget.ui.text_pass.text()
     mod_mensaje(widget, "Validando inicio de sesion...", "none")
     QApplication.processEvents()
     time.sleep(2)
-    res = bbdd.coincide(user, passw)
+    res = db.coincide(user, passw)
 
     # Se evalua el valor de 'res' para iniciar sesion
     if isinstance(res, str): # Cuando res = 'e', significa que hubo error en la conexion con la DB.
@@ -38,4 +37,5 @@ def mod_mensaje(widget, texto, color):
 
 def iniciar_home():
     dialog = dialog_home()
+    dialog.exec_()
     dialog.show()

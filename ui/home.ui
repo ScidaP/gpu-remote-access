@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Home</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -57,7 +57,11 @@
      </widget>
     </item>
     <item row="3" column="0" colspan="2">
-     <widget class="QListView" name="listado_conexiones"/>
+     <widget class="QListView" name="listado_conexiones">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

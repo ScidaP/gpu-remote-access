@@ -6,28 +6,29 @@
 import psycopg2 as pgsql
 
 class db:
-    def __init__(self, dbname, user, password, host="localhost"):
-        self.dbname = dbname
-        self.user = user
-        self.password = password
-        self.host = host
-        self.conexion = ""
+
+    def __init__(self):
+        self.dbname = "ejemplo"
+        self.user = "admin"
+        self.password = "admin"
+        self.host = "localhost"
+        self.conexion = None
 
     def conectar(self):
         try:
-            conexion = pgsql.connect(
+            conexion_nueva = pgsql.connect(
                 dbname=self.dbname,
                 user=self.user,
                 password=self.password,
                 host=self.host
             )
-            self.conexion = conexion;
+            self.conexion = conexion_nueva
         except Exception:
             print("Error al conectar la DB: %s", Exception.args)
 
     def coincide(self, usuario, contra):
         try:
-            cursor = self.conexion.cursor()
+            cursor = db.conexion.cursor()
             contra_s = str(contra)
 
             cursor.execute("SELECT * FROM usuarios WHERE usuario=%s AND password=%s", (usuario, contra_s))
@@ -40,8 +41,27 @@ class db:
         except Exception:
             return 'e'
 
+    def obtener_datos(usuario):
+        try:
+            cursor = db.conexion.cursor()
+
+            cursor.execute("SELECT data FROM conexiones WHERE usuario=%s", (usuario))
+
+            res = cursor.fetchall()
+
+            return res
+        except Exception:
+            return 'e'
+
+    def guardar_datos(usuario):
+        pass
+
 """
 bd = db("ejemplo","admin","admin")
 bd.conectar()
 print(bd.coincide("Pato", 1234))
 """
+
+db = db()
+db.conectar() # Cuando importo la conexion en otros archivos, solamente importo la variable 'db'. De esa manera
+                #, uso una sola conexion para todo el proyecto
