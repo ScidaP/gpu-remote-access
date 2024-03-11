@@ -30,6 +30,13 @@ class Ui_Dialog(object):
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.line = QFrame(self.layoutWidget)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.HLine)
+        self.line.setFrameShadow(QFrame.Sunken)
+
+        self.gridLayout.addWidget(self.line, 1, 0, 1, 2)
+
         self.label_2 = QLabel(self.layoutWidget)
         self.label_2.setObjectName(u"label_2")
         font = QFont()
@@ -38,27 +45,30 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
 
+        self.lista_conexiones = QListWidget(self.layoutWidget)
+        self.lista_conexiones.setObjectName(u"lista_conexiones")
+
+        self.gridLayout.addWidget(self.lista_conexiones, 3, 0, 5, 1)
+
         self.l_ip_propia = QLabel(self.layoutWidget)
         self.l_ip_propia.setObjectName(u"l_ip_propia")
 
         self.gridLayout.addWidget(self.l_ip_propia, 0, 0, 1, 2)
 
-        self.line = QFrame(self.layoutWidget)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.HLine)
-        self.line.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout.addWidget(self.line, 1, 0, 1, 2)
-
         self.b_nueva_conexion = QPushButton(self.layoutWidget)
         self.b_nueva_conexion.setObjectName(u"b_nueva_conexion")
 
-        self.gridLayout.addWidget(self.b_nueva_conexion, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.b_nueva_conexion, 3, 1, 1, 1)
 
-        self.lista_conexiones = QListWidget(self.layoutWidget)
-        self.lista_conexiones.setObjectName(u"lista_conexiones")
+        self.b_borrar_conexion = QPushButton(self.layoutWidget)
+        self.b_borrar_conexion.setObjectName(u"b_borrar_conexion")
 
-        self.gridLayout.addWidget(self.lista_conexiones, 4, 0, 1, 2)
+        self.gridLayout.addWidget(self.b_borrar_conexion, 4, 1, 1, 1)
+
+        self.b_editar_conexion = QPushButton(self.layoutWidget)
+        self.b_editar_conexion.setObjectName(u"b_editar_conexion")
+
+        self.gridLayout.addWidget(self.b_editar_conexion, 5, 1, 1, 1)
 
 
         self.retranslateUi(Dialog)
@@ -71,5 +81,7 @@ class Ui_Dialog(object):
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Conexiones:", None))
         self.l_ip_propia.setText(QCoreApplication.translate("Dialog", u"Tu IP: ", None))
         self.b_nueva_conexion.setText(QCoreApplication.translate("Dialog", u"Nueva", None))
+        self.b_borrar_conexion.setText(QCoreApplication.translate("Dialog", u"Borrar", None))
+        self.b_editar_conexion.setText(QCoreApplication.translate("Dialog", u"Editar", None))
     # retranslateUi
 
