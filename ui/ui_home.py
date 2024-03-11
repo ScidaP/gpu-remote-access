@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QDialog, QFrame,
-    QGridLayout, QLabel, QListView, QPushButton,
+from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QGridLayout,
+    QLabel, QListWidget, QListWidgetItem, QPushButton,
     QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
@@ -30,6 +30,14 @@ class Ui_Dialog(object):
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.label_2 = QLabel(self.layoutWidget)
+        self.label_2.setObjectName(u"label_2")
+        font = QFont()
+        font.setPointSize(15)
+        self.label_2.setFont(font)
+
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
+
         self.l_ip_propia = QLabel(self.layoutWidget)
         self.l_ip_propia.setObjectName(u"l_ip_propia")
 
@@ -42,24 +50,15 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.line, 1, 0, 1, 2)
 
-        self.label_2 = QLabel(self.layoutWidget)
-        self.label_2.setObjectName(u"label_2")
-        font = QFont()
-        font.setPointSize(15)
-        self.label_2.setFont(font)
-
-        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
-
         self.b_nueva_conexion = QPushButton(self.layoutWidget)
         self.b_nueva_conexion.setObjectName(u"b_nueva_conexion")
 
         self.gridLayout.addWidget(self.b_nueva_conexion, 2, 1, 1, 1)
 
-        self.listado_conexiones = QListView(self.layoutWidget)
-        self.listado_conexiones.setObjectName(u"listado_conexiones")
-        self.listado_conexiones.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.lista_conexiones = QListWidget(self.layoutWidget)
+        self.lista_conexiones.setObjectName(u"lista_conexiones")
 
-        self.gridLayout.addWidget(self.listado_conexiones, 3, 0, 1, 2)
+        self.gridLayout.addWidget(self.lista_conexiones, 4, 0, 1, 2)
 
 
         self.retranslateUi(Dialog)
@@ -69,8 +68,8 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Home", None))
-        self.l_ip_propia.setText(QCoreApplication.translate("Dialog", u"Tu IP: ", None))
         self.label_2.setText(QCoreApplication.translate("Dialog", u"Conexiones:", None))
+        self.l_ip_propia.setText(QCoreApplication.translate("Dialog", u"Tu IP: ", None))
         self.b_nueva_conexion.setText(QCoreApplication.translate("Dialog", u"Nueva", None))
     # retranslateUi
 
