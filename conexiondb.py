@@ -44,25 +44,27 @@ class db:
         except Exception:
             return 'e'
 
-    def obtener_id_usuario(usuario): # -> Chequear su funcionamiento
+    def obtener_id_usuario(self, usuario): # -> Chequear su funcionamiento
         try:
             cursor = db.conexion.cursor()
 
-            cursor.execute("SELECT id_usuario FROM usuarios WHERE usuario=%s", (usuario))
+            cursor.execute("SELECT id_usuario FROM usuarios WHERE usuario=%s", (usuario,))
 
             res = cursor.fetchone()
 
             if res:
                 return res
             return False
-        except Exception:
-            return 'e'
+        except Exception as e:
+            print("Error:", str(e))
+            print("Tipo de error:", type(e))
+            return 'e1'
 
     def obtener_datos(self, usuario): # -> Chequear su funcionamiento
         try:
             cursor = db.conexion.cursor()
 
-            cursor.execute("SELECT conexion FROM conexiones WHERE id_usuario=%s", (self.obtener_id_usuario(usuario)))
+            cursor.execute("SELECT conexion FROM conexiones WHERE id_usuario=%s", (self.obtener_id_usuario(usuario),))
 
             res = cursor.fetchall()
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 12.0.2, 2024-03-09T21:29:32. -->
+<!-- Written by QtCreator 12.0.2, 2024-03-11T18:25:05. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -148,10 +148,11 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">widget.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/patricio/pythonUIproj/pythUIProj/widget.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/patricio/pythonUIproj/pythUIProj/widget.py</value>
-    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
+    <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">true</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/patricio/pythonUIproj/pythUIProj/widget.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="int" key="RunConfiguration.UseQmlDebugger">0</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">false</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/patricio/pythonUIproj/pythUIProj</value>
     <value type="QString" key="RunConfiguration.X11Forwarding">:0</value>
    </valuemap>
