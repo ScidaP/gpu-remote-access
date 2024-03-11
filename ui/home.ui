@@ -23,6 +23,13 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="1">
+     <widget class="QPushButton" name="b_borrar_conexion">
+      <property name="text">
+       <string>Borrar</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="0" colspan="2">
      <widget class="Line" name="line">
       <property name="orientation">
@@ -42,9 +49,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0" rowspan="5">
-     <widget class="QListWidget" name="lista_conexiones"/>
-    </item>
     <item row="0" column="0" colspan="2">
      <widget class="QLabel" name="l_ip_propia">
       <property name="text">
@@ -59,17 +63,20 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="b_borrar_conexion">
-      <property name="text">
-       <string>Borrar</string>
-      </property>
-     </widget>
+    <item row="3" column="0" rowspan="4">
+     <widget class="QListWidget" name="lista_conexiones"/>
     </item>
     <item row="5" column="1">
      <widget class="QPushButton" name="b_editar_conexion">
       <property name="text">
        <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QPushButton" name="b_actualizar_db">
+      <property name="text">
+       <string>Actualizar en DB</string>
       </property>
      </widget>
     </item>
