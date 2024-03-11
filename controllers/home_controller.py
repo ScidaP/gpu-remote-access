@@ -2,7 +2,7 @@
 from requests import get
 from dialog_conexion import dialog_conexion
 from PySide6.QtCore import Qt, QStringListModel
-from PySide6.QtWidgets import QListWidgetItem, QInputDialog, QMessageBox
+from PySide6.QtWidgets import QListWidgetItem, QInputDialog, QMessageBox, QLineEdit
 from conexiondb import db
 import sys
 
@@ -23,9 +23,14 @@ class homeController: # MANEJAR QListWidget : https://www.youtube.com/watch?v=In
         Dialog.closeEvent = self.cerrar_programa
         Dialog.ui.b_nueva_conexion.clicked.connect(lambda: agregar_item_lista(Dialog))
         Dialog.ui.b_borrar_conexion.clicked.connect(lambda: eliminar_item_lista(Dialog))
+        Dialog.ui.b_editar_conexion.clicked.connect(lambda: editar_item_lista(Dialog))
+        Dialog.ui.b_actualizar_db.clicked.connect(lambda: actualizar_datos_db(Dialog))
 
     def cerrar_programa(self, event):
         sys.exit()
+
+def actualizar_datos_db(Dialog): # Falta desarrollar
+    pass
 
 def agregar_item_lista(Dialog):
     indice_actual = Dialog.ui.lista_conexiones.currentRow()
@@ -45,6 +50,15 @@ def eliminar_item_lista(Dialog):
     if pregunta == QMessageBox.StandardButton.Yes:
         item = Dialog.ui.lista_conexiones.takeItem(indice_actual)
         del item
+
+def editar_item_lista(Dialog):
+    indice_actual = Dialog.ui.lista_conexiones.currentRow()
+    item = Dialog.ui.lista_conexiones.item(indice_actual)
+    if item is not None:
+        text, ok = QInputDialog.getText(Dialog, "Cambiar IP Conexion", "Conexion", QLineEdit.Normal, item.text())
+        if text and ok is not None:
+            item.setText(text)
+
 
 def obtener_ip():
     ip = get('https://api.ipify.org').content.decode('utf8')
