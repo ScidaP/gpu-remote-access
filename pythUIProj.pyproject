@@ -11,6 +11,7 @@
         "dialog_home.py",
         "dialog_conexion.py",
         "ui/conexion.ui",
-        "controllers/conexion_controller.py"
+        "controllers/conexion_controller.py",
+        "classes/usuario_logueado.py"
     ]
 }

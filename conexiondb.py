@@ -72,6 +72,20 @@ class db:
         except Exception:
             return 'e'
 
+    def actualizar_datos(self, lista, usuario): # No funciona bien. REVISAR
+        cursor = db.conexion.cursor()
+        ultimo_id = db.obtener_ultimo_id()[0]
+        i = 1
+        for item in lista:
+            cursor.execute("INSERT INTO conexiones (id, id_usuario, conexion) VALUES (%s, %s, %s)",
+            (ultimo_id+i, self.obtener_id_usuario(usuario.nombre), item))
+            i += 1
+
+    def obtener_ultimo_id(self):
+        cursor = db.conexion.cursor()
+        cursor.execute("SELECT id FROM conexiones ORDER BY id DESC LIMIT 1")
+        return cursor.fetchone()
+
     def guardar_datos(usuario):
         pass
 

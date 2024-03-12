@@ -5,6 +5,8 @@ from PySide6.QtCore import Qt, QStringListModel
 from PySide6.QtWidgets import QListWidgetItem, QInputDialog, QMessageBox, QLineEdit
 from conexiondb import db
 import sys
+sys.path.append("/home/patricio/pythonUIproj/pythUIProj/classes")
+from usuario_logueado import usuario
 
 class homeController: # MANEJAR QListWidget : https://www.youtube.com/watch?v=InM-9LLhdnI&ab_channel=TurtleCode
     def __init__(self, Dialog):
@@ -30,7 +32,25 @@ class homeController: # MANEJAR QListWidget : https://www.youtube.com/watch?v=In
         sys.exit()
 
 def actualizar_datos_db(Dialog): # Falta desarrollar
-    pass
+    lista_items = list()
+
+    for i in range(Dialog.ui.lista_conexiones.count()):
+        lista_items.append(Dialog.ui.lista_conexiones.item(i).text())
+    #QMessageBox.information(Dialog, "Info", "DB actualizada con éxito")
+    # Filtro las conexiones que ya existían y las quito de la lista
+
+    lista_filtrada = filtrar_conexiones_existentes(Dialog, lista_items)
+
+    # Ahora actualizo las conexiones en la DB
+    db.actualizar_datos(lista_filtrada, usuario)
+
+def filtrar_conexiones_existentes(Dialog, lista_items):
+    conexiones_db = db.obtener_datos('Pato')
+    for item in conexiones_db:
+        dato = item[0]
+        if (dato in lista_items):
+            lista_items.remove(dato)
+    return lista_items
 
 def agregar_item_lista(Dialog):
     indice_actual = Dialog.ui.lista_conexiones.currentRow()

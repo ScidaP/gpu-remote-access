@@ -2,9 +2,11 @@
 
 from PySide6.QtWidgets import QApplication, QDialog
 import time
-import conexiondb as db
 from dialog_home import dialog_home
 from conexiondb import db
+import sys
+sys.path.append("/home/patricio/pythonUIproj/pythUIProj/classes")
+from usuario_logueado import usuario
 
 class FormController:
     def __init__(self, widget):
@@ -26,6 +28,7 @@ def inicio_sesion(widget):
         mod_mensaje(widget, "No se pudo conectar con la DB", "red")
     if res:
         mod_mensaje(widget, "Sesion iniciada", "green")
+        usuario.nombre = user;
         widget.close()
         iniciar_home()
     else:
