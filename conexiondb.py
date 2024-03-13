@@ -29,6 +29,35 @@ class db:
         except Exception:
             print("Error al conectar la DB: %s", Exception.args)
 
+    # ###  ALTA, BAJA Y MODIFICACION:  CONEXIONES ###
+
+    def agregar_registro_conexion(self, usuario, ip):
+        cursor = db.conexion.cursor()
+        ultimo_id = int(db.obtener_ultimo_id()[0])
+        cursor.execute("INSERT INTO conexiones (id, id_usuario, conexion) VALUES (%s, %s, %s)",
+        (ultimo_id+1, self.obtener_id_usuario(usuario.nombre), ip))
+        db.conexion.commit()
+
+    def eliminar_registro_conexion(self, ip):
+        cursor = db.conexion.cursor()
+        cursor.execute("DELETE FROM conexiones WHERE id = %s", self.obtener_id_conexion(ip))
+        db.conexion.commit()
+
+    def actualizar_registro_conexion(self, ip_vieja, ip_nueva):
+        cursor = db.conexion.cursor()
+        cursor.execute("UPDATE conexiones SET conexion = %s WHERE conexion = %s", (ip_nueva, ip_vieja))
+        db.conexion.commit()
+
+    # ###  -- FIN DE ALTA, BAJA Y MODIFICACION --  ###
+
+    def obtener_id_conexion(self, ip):
+        cursor = db.conexion.cursor()
+        cursor.execute("SELECT id FROM conexiones WHERE conexion = %s", (ip,))
+        res = cursor.fetchone()
+        if res:
+            return res;
+        return 'e'
+
     def coincide(self, usuario, contra):
         try:
             cursor = db.conexion.cursor()
@@ -72,14 +101,15 @@ class db:
         except Exception:
             return 'e'
 
-    def actualizar_datos(self, lista, usuario): # No funciona bien. REVISAR
+    """def actualizar_datos(self, lista, usuario):
         cursor = db.conexion.cursor()
-        ultimo_id = db.obtener_ultimo_id()[0]
+        ultimo_id = int(db.obtener_ultimo_id()[0])
         i = 1
         for item in lista:
             cursor.execute("INSERT INTO conexiones (id, id_usuario, conexion) VALUES (%s, %s, %s)",
-            (ultimo_id+i, self.obtener_id_usuario(usuario.nombre), item))
+            (ultimo_id+i, int(self.obtener_id_usuario(usuario.nombre)[0]), item))
             i += 1
+        db.conexion.commit()"""
 
     def obtener_ultimo_id(self):
         cursor = db.conexion.cursor()

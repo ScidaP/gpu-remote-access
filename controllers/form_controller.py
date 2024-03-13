@@ -10,9 +10,9 @@ from usuario_logueado import usuario
 
 class FormController:
     def __init__(self, widget):
-        self.crear_conexiones(widget)
+        self.crear_signals(widget)
 
-    def crear_conexiones(self, Widget):
+    def crear_signals(self, Widget):
         Widget.ui.BotonEnviar1.clicked.connect(lambda: inicio_sesion(Widget))
 
 def inicio_sesion(widget):
