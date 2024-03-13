@@ -29,7 +29,7 @@ class db:
         except Exception:
             print("Error al conectar la DB: %s", Exception.args)
 
-    # ###  ALTA, BAJA Y MODIFICACION:  CONEXIONES ###
+    # ###  ALTA, BAJA Y MODIFICACION:  CONEXIONES ### -->
 
     def agregar_registro_conexion(self, usuario, ip):
         cursor = db.conexion.cursor()

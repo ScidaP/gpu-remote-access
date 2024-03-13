@@ -30,11 +30,14 @@ class homeController: # MANEJAR QListWidget : https://www.youtube.com/watch?v=In
     def cerrar_programa(self, event):
         sys.exit()
 
+# ALTA BAJA Y MODIFICACION #
+#     # !!!!!! ESTAS FUNCIONES FUNCIONAN COMO ALTA,BAJA,MOD DE LA LISTA Y DE LA DB AL MISMO TIEMPO. !!!!! #
+
 def agregar_item_lista(Dialog):
     indice_actual = Dialog.ui.lista_conexiones.currentRow()
     texto, ok = QInputDialog.getText(Dialog, "Nueva Conexión", "Conexion")
     if ok and texto is not None:
-        db.agregar_registro_conexion(usuario, texto)
+        db.agregar_registro_conexion(usuario, texto) # Actualizar DB
         Dialog.ui.lista_conexiones.insertItem(indice_actual, texto)
 
 def eliminar_item_lista(Dialog):
@@ -47,7 +50,7 @@ def eliminar_item_lista(Dialog):
     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
 
     if pregunta == QMessageBox.StandardButton.Yes:
-        db.eliminar_registro_conexion(item.text())
+        db.eliminar_registro_conexion(item.text()) # Actualizar DB
         item = Dialog.ui.lista_conexiones.takeItem(indice_actual)
         del item
 
@@ -58,9 +61,10 @@ def editar_item_lista(Dialog):
     if item is not None:
         text, ok = QInputDialog.getText(Dialog, "Cambiar IP Conexion", "Conexion", QLineEdit.Normal, item.text())
         if text and ok is not None:
-            db.actualizar_registro_conexion(item.text(), text)
+            db.actualizar_registro_conexion(item.text(), text) # Actualizar DB
             item.setText(text)
 
+# FIN ALTA-BAJA-MOD
 
 def obtener_ip():
     ip = get('https://api.ipify.org').content.decode('utf8')
